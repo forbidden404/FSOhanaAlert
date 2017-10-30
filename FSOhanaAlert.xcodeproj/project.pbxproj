@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF075DE51FA2D1B40017FFDC /* FSOhanaCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF075DE41FA2D1B40017FFDC /* FSOhanaCustomAlert.swift */; };
+		CF075DE71FA2D1D60017FFDC /* FSOhanaCustomAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF075DE61FA2D1D60017FFDC /* FSOhanaCustomAlert.xib */; };
 		CFD971FC1FA27CED006D76D2 /* FSOhanaAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD971FA1FA27CED006D76D2 /* FSOhanaAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFD972031FA27D6B006D76D2 /* FSOhanaSimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD972021FA27D6B006D76D2 /* FSOhanaSimpleAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF075DE41FA2D1B40017FFDC /* FSOhanaCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSOhanaCustomAlert.swift; sourceTree = "<group>"; };
+		CF075DE61FA2D1D60017FFDC /* FSOhanaCustomAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FSOhanaCustomAlert.xib; sourceTree = "<group>"; };
 		CFD971F71FA27CED006D76D2 /* FSOhanaAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSOhanaAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD971FA1FA27CED006D76D2 /* FSOhanaAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSOhanaAlert.h; sourceTree = "<group>"; };
 		CFD971FB1FA27CED006D76D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFD972021FA27D6B006D76D2 /* FSOhanaSimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSOhanaSimpleAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +54,9 @@
 			children = (
 				CFD971FA1FA27CED006D76D2 /* FSOhanaAlert.h */,
 				CFD971FB1FA27CED006D76D2 /* Info.plist */,
+				CFD972021FA27D6B006D76D2 /* FSOhanaSimpleAlert.swift */,
+				CF075DE41FA2D1B40017FFDC /* FSOhanaCustomAlert.swift */,
+				CF075DE61FA2D1D60017FFDC /* FSOhanaCustomAlert.xib */,
 			);
 			path = FSOhanaAlert;
 			sourceTree = "<group>";
@@ -95,6 +104,7 @@
 				TargetAttributes = {
 					CFD971F61FA27CED006D76D2 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -121,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF075DE71FA2D1D60017FFDC /* FSOhanaCustomAlert.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF075DE51FA2D1B40017FFDC /* FSOhanaCustomAlert.swift in Sources */,
+				CFD972031FA27D6B006D76D2 /* FSOhanaSimpleAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +266,7 @@
 		CFD972001FA27CED006D76D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -266,6 +280,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = forbidden404.FSOhanaAlert;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -274,6 +289,7 @@
 		CFD972011FA27CED006D76D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
