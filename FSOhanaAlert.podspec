@@ -39,8 +39,8 @@ FSOhanaAlert is a custom alert view and controller created for the Ohana - Famil
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  # s.license      = "MIT"
+  s.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -91,8 +91,7 @@ FSOhanaAlert is a custom alert view and controller created for the Ohana - Famil
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files = "FSOhanaAlert"
 
   # s.public_header_files = "Classes/**/*.h"
 
