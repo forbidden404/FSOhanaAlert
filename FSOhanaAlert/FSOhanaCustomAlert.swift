@@ -14,8 +14,16 @@ public class FSOhanaCustomAlert: UIView {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var buttonStackView: UIStackView!
     
-    var completion: ((Any?, Error?) -> Void)?
+    var completion: ((Any?, Error?) -> Void)? {
+        didSet {
+            leftButton.isHidden = false
+            rightButton.isHidden = false
+            leftButton.isUserInteractionEnabled = true
+            rightButton.isUserInteractionEnabled = true
+        }
+    }
     
     let nibName = "FSOhanaCustomAlert"
     var contentView: UIView!
@@ -32,11 +40,33 @@ public class FSOhanaCustomAlert: UIView {
     }
     
     public override func layoutSubviews() {
-        // Rounded corners
         self.layoutIfNeeded()
-        self.contentView.layer.masksToBounds = true
-        self.contentView.clipsToBounds = true
-        self.contentView.layer.cornerRadius = 10
+        
+         if completion == nil {
+         self.buttonStackView.removeFromSuperview()
+         self.contentView.frame = CGRect(x: self.contentView.frame.origin.x, y: self.contentView.frame.origin.y, width: self.contentView.frame.size.width, height: self.contentView.frame.size.height - (self.buttonStackView.bounds.size.height/2.0))
+         }
+        
+        // Shadow
+        self.contentView.backgroundColor = UIColor.clear
+        for subview in self.contentView.subviews {
+            subview.backgroundColor = UIColor.clear
+        }
+        let shadowPath = UIBezierPath(rect: self.contentView.bounds)
+        self.contentView.layer.shadowColor = UIColor.black.cgColor
+        self.contentView.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+        self.contentView.layer.shadowOpacity = 0.5
+        self.contentView.layer.shadowPath = shadowPath.cgPath
+
+        // Corner
+        let border = UIView()
+        border.frame = self.contentView.bounds
+        border.layer.masksToBounds = true
+        border.clipsToBounds = true
+        border.layer.cornerRadius = 10
+        border.layer.backgroundColor = UIColor.white.cgColor
+        self.contentView.addSubview(border)
+        self.contentView.sendSubview(toBack: border)
     }
     
     public override func didMoveToSuperview() {
@@ -44,7 +74,19 @@ public class FSOhanaCustomAlert: UIView {
         UIView.animate(withDuration: 0.15, animations: {
             self.contentView.alpha = 1.0
             self.contentView.transform = CGAffineTransform.identity
-        })
+        }) { _ in
+            if self.completion == nil {
+                let when = DispatchTime.now() + 3
+                DispatchQueue.main.asyncAfter(deadline: when) {
+                    UIView.animate(withDuration: 0.20, delay: 0, options: .curveEaseOut, animations: {
+                        self.contentView.alpha = 0.0
+                        self.contentView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+                    }) { _ in
+                        self.removeFromSuperview()
+                    }
+                }
+            }
+        }
     }
     
     private func setUpView() {
@@ -67,8 +109,6 @@ public class FSOhanaCustomAlert: UIView {
         rightButton.isHidden = true
         rightButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        leftButton.setTitle("Cancel", for: .normal)
-        rightButton.setTitle("Take", for: .normal)
     }
     
     private func aspectRatio() -> CGRect {
@@ -87,14 +127,17 @@ public class FSOhanaCustomAlert: UIView {
     
     public func set(text: String) {
         self.textLabel.text = text
+        self.textLabel.adjustsFontSizeToFitWidth = true
     }
     
-    public func set(completion: @escaping ((Any?, Error?) -> Void)) {
+    public func set(completion: @escaping ((Any?, Error?) -> Void), with titles: [String] = ["Cancel", "Take"], and types: [FSOhanaButtonType] = [.cancel, .standard]) {
         self.completion = completion
-        leftButton.isHidden = false
-        rightButton.isHidden = false
-        leftButton.isUserInteractionEnabled = true
-        rightButton.isUserInteractionEnabled = true
+        leftButton.tintColor = types[0].color()
+        rightButton.tintColor = types[1].color()
+        leftButton.titleLabel?.font = types[0].font()
+        rightButton.titleLabel?.font = types[1].font()
+        leftButton.setTitle(titles[0], for: .normal)
+        rightButton.setTitle(titles[1], for: .normal)
     }
 
     @IBAction func leftButtonPressed(_ sender: UIButton) {

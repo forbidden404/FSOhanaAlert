@@ -8,11 +8,6 @@
 
 import UIKit
 
-public enum FSOhanaAlertType {
-    case takeActivity
-    case leaveActivity
-}
-
 public class FSOhanaSimpleAlert {
     static public let shared: FSOhanaSimpleAlert = FSOhanaSimpleAlert()
     
@@ -59,10 +54,3 @@ public class FSOhanaSimpleAlert {
         return alertController
     }
 }
-
-public enum FSError: Error {
-    case NoResultFound
-    case LeftButton
-    case RightButton
-}
-
