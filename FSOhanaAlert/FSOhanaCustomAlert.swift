@@ -15,6 +15,15 @@ public class FSOhanaCustomAlert: UIView {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var buttonStackView: UIStackView!
+    @IBOutlet weak var okButton: UIButton!
+    var hasOkButton: Bool = false {
+        willSet {
+            okButton.isHidden = !newValue
+            okButton.isUserInteractionEnabled = newValue
+            okButton.tintColor = FSOhanaButtonType.standard.color()
+            okButton.titleLabel?.font = FSOhanaButtonType.standard.font()
+        }
+    }
     
     var completion: ((Any?, Error?) -> Void)? {
         didSet {
@@ -22,6 +31,7 @@ public class FSOhanaCustomAlert: UIView {
             rightButton.isHidden = false
             leftButton.isUserInteractionEnabled = true
             rightButton.isUserInteractionEnabled = true
+            hasOkButton = false
         }
     }
     
@@ -42,7 +52,7 @@ public class FSOhanaCustomAlert: UIView {
     public override func layoutSubviews() {
         self.layoutIfNeeded()
         
-         if completion == nil {
+         if completion == nil && !hasOkButton {
          self.buttonStackView.removeFromSuperview()
          self.contentView.frame = CGRect(x: self.contentView.frame.origin.x, y: self.contentView.frame.origin.y, width: self.contentView.frame.size.width, height: self.contentView.frame.size.height - (self.buttonStackView.bounds.size.height/2.0))
          }
@@ -75,7 +85,7 @@ public class FSOhanaCustomAlert: UIView {
             self.contentView.alpha = 1.0
             self.contentView.transform = CGAffineTransform.identity
         }) { _ in
-            if self.completion == nil {
+            if self.completion == nil && !self.hasOkButton {
                 let when = DispatchTime.now() + 3
                 DispatchQueue.main.asyncAfter(deadline: when) {
                     UIView.animate(withDuration: 0.20, delay: 0, options: .curveEaseOut, animations: {
@@ -109,6 +119,8 @@ public class FSOhanaCustomAlert: UIView {
         rightButton.isHidden = true
         rightButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        hasOkButton = false
+        okButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     private func aspectRatio() -> CGRect {
@@ -139,6 +151,10 @@ public class FSOhanaCustomAlert: UIView {
         leftButton.setTitle(titles[0], for: .normal)
         rightButton.setTitle(titles[1], for: .normal)
     }
+    
+    public func has(okButton: Bool) {
+        self.hasOkButton = okButton
+    }
 
     @IBAction func leftButtonPressed(_ sender: UIButton) {
         guard let completion = completion else {
@@ -152,5 +168,9 @@ public class FSOhanaCustomAlert: UIView {
             return
         }
         completion(self, FSError.RightButton)
+    }
+    
+    @IBAction func okButtonPressed(_ sender: UIButton) {
+        self.removeFromSuperview()
     }
 }
