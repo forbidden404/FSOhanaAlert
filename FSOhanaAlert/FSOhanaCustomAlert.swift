@@ -57,6 +57,11 @@ public class FSOhanaCustomAlert: UIView {
          self.contentView.frame = CGRect(x: self.contentView.frame.origin.x, y: self.contentView.frame.origin.y, width: self.contentView.frame.size.width, height: self.contentView.frame.size.height - (self.buttonStackView.bounds.size.height/2.0))
          }
         
+        // If there is no Ok Button
+        if !hasOkButton {
+            self.okButton.removeFromSuperview()
+        }
+        
         // Shadow
         self.contentView.backgroundColor = UIColor.clear
         for subview in self.contentView.subviews {
