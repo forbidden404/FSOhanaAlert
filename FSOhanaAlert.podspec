@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FSOhanaAlert"
-  s.version      = "0.2.3"
+  s.version      = "0.2.4"
   s.summary      = "FSOhanaAlert is a custom alert view and controller created for the Ohana - Family Together app."
 
   # This description is used to generate tags and improve search results.
