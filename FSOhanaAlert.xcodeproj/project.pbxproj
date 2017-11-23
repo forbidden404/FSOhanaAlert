@@ -16,7 +16,7 @@
 
 /* Begin PBXFileReference section */
 		CF075DE41FA2D1B40017FFDC /* FSOhanaCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSOhanaCustomAlert.swift; sourceTree = "<group>"; };
-		CF075DE61FA2D1D60017FFDC /* FSOhanaCustomAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FSOhanaCustomAlert.xib; sourceTree = "<group>"; };
+		CF075DE61FA2D1D60017FFDC /* FSOhanaCustomAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FSOhanaCustomAlert.xib; path = FSOhanaAlert/FSOhanaCustomAlert.xib; sourceTree = SOURCE_ROOT; };
 		CF8E77771FAA7CDC000AFA85 /* FSOhanaHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSOhanaHelper.swift; sourceTree = "<group>"; };
 		CFD971F71FA27CED006D76D2 /* FSOhanaAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSOhanaAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD971FA1FA27CED006D76D2 /* FSOhanaAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSOhanaAlert.h; sourceTree = "<group>"; };
