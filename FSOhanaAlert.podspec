@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FSOhanaAlert"
-  s.version      = "0.2.2"
+  s.version      = "0.2.3"
   s.summary      = "FSOhanaAlert is a custom alert view and controller created for the Ohana - Family Together app."
 
   # This description is used to generate tags and improve search results.
@@ -106,6 +106,7 @@ FSOhanaAlert is a custom alert view and controller created for the Ohana - Famil
 
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
+  s.resources = 'FOLDER_INCLUDES_XIB_FILES/*.xib'
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 

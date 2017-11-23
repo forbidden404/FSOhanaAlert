@@ -105,7 +105,7 @@ public class FSOhanaCustomAlert: UIView {
     }
     
     private func setUpView() {
-        let bundle = Bundle(for: type(of: self))
+        let bundle = Bundle(for: self.classForCoder)
         let nib = UINib(nibName: self.nibName, bundle: bundle)
                 
         self.contentView = nib.instantiate(withOwner: self, options: nil).first as! UIView
