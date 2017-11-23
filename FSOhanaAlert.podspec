@@ -106,7 +106,7 @@ FSOhanaAlert is a custom alert view and controller created for the Ohana - Famil
 
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
-  s.resources = 'FOLDER_INCLUDES_XIB_FILES/*.xib'
+  s.resources    = "FSOhanaAlert/*.xib"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
